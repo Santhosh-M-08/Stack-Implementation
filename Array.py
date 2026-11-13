@@ -1,7 +1,9 @@
+from array import array
+
 class Stack:
     def __init__(self, size):
         self.size = size
-        self.stack = [None] * size
+        self.stack = array('i', [0] * size)
         self.top = -1
 
     def push(self, value):
@@ -28,7 +30,8 @@ class Stack:
         return self.top == -1
 
     def display(self):
-        print(self.stack[:self.top + 1])
+        for i in range(self.top, -1, -1):
+            print(self.stack[i])
 
 
 s = Stack(5)
@@ -37,7 +40,9 @@ s.push(10)
 s.push(20)
 s.push(30)
 
+print("Stack:")
 s.display()
+
 print("Popped:", s.pop())
 print("Top:", s.peek())
 print("Is Empty:", s.is_empty())
